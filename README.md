@@ -15,16 +15,16 @@ sudo vi /etc/nginx/conf.d/server.conf
 
 # paste the text in server.conf
 
-server {
-  listen 80;
+        server {
+          listen 80;
 
-  server_name mysite.com www.mysite.com;
-  root /opt/apps/angular/dist;
-  index index.html;
-   location / {
-        try_files $uri $uri/ /index.html =404;
-  }
-}
+          server_name mysite.com www.mysite.com;
+          root /opt/apps/angular/dist;
+          index index.html;
+           location / {
+                try_files $uri $uri/ /index.html =404;
+          }
+        }
 
 
 
