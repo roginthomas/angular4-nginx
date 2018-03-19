@@ -1,27 +1,34 @@
-# MyApp
+Configure angular in AWS ec2 Ubuntu
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run "npm install"
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build --prod` to build the project in production. 
 
-## Running unit tests
+It will generate a folder dist/ contain index.html 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+Then install Nginx and create a file server.conf in given location
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+sudo vi /etc/nginx/conf.d/server.conf
 
-## Further help
+# paste the text in server.conf
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+server {
+  listen 80;
+
+  server_name mysite.com www.mysite.com;
+  root /opt/apps/angular/dist;
+  index index.html;
+   location / {
+        try_files $uri $uri/ /index.html =404;
+  }
+}
+
+
+
+
+
+
+
